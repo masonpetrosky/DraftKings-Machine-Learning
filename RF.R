@@ -1,0 +1,6 @@
+setwd("~/DK011422")
+library(data.table)
+library(randomForest)
+train <- fread("NBA.csv")
+rf <- randomForest(Actual ~ NF + RW + Salary, nodesize = 60, ntree = 10000, data = train)
+sqrt(rf$mse[which.min(rf$mse)])
